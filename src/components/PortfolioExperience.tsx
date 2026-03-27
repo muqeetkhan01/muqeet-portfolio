@@ -54,10 +54,13 @@ function withBasePath(path: string) {
 
 function resolveProjectAssets(project: PortfolioApp) {
   const assets = projectAssets[project.slug as keyof typeof projectAssets];
+  const assetEntry = assets as { icon?: string; cover?: string; screenshots?: readonly string[] } | undefined;
+  const screenshots = assetEntry?.screenshots ?? (project.cover ? [project.cover] : assetEntry?.cover ? [assetEntry.cover] : []);
 
   return {
-    icon: project.icon ?? assets?.icon,
-    cover: project.cover ?? assets?.cover
+    icon: project.icon ?? assetEntry?.icon,
+    cover: project.cover ?? assetEntry?.cover,
+    screenshots,
   };
 }
 
@@ -638,7 +641,10 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
   const assets = resolveProjectAssets(project);
 
   if (assets.cover) {
-    const coverSrc = withBasePath(assets.cover);
+    const [primaryScreenshot, secondaryScreenshot, tertiaryScreenshot] = assets.screenshots;
+    const primaryScreenshotSrc = withBasePath(primaryScreenshot ?? assets.cover);
+    const secondaryScreenshotSrc = secondaryScreenshot ? withBasePath(secondaryScreenshot) : null;
+    const tertiaryScreenshotSrc = tertiaryScreenshot ? withBasePath(tertiaryScreenshot) : null;
 
     return (
       <div
@@ -654,11 +660,13 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="theme-device-side hidden rounded-[28px] p-2 sm:block"
+            className={`theme-device-side hidden rounded-[28px] p-2 sm:block ${secondaryScreenshotSrc ? "" : "sm:hidden"}`}
           >
-            <div className="theme-device-screen relative aspect-[9/19] w-[160px] overflow-hidden rounded-[22px]">
-              <Image src={coverSrc} alt={`${project.name} app preview`} fill className="object-cover object-top" />
-            </div>
+            {secondaryScreenshotSrc ? (
+              <div className="theme-device-screen relative aspect-[9/19] w-[160px] overflow-hidden rounded-[22px]">
+                <Image src={secondaryScreenshotSrc} alt={`${project.name} app preview`} fill className="object-cover object-top" />
+              </div>
+            ) : null}
           </motion.div>
 
           <motion.div
@@ -668,18 +676,20 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
           >
             <div className="theme-device-notch absolute left-1/2 top-3 h-1.5 w-20 -translate-x-1/2 rounded-full" />
             <div className="theme-device-screen feature-device-screen relative aspect-[9/19] w-[220px] overflow-hidden rounded-[28px] sm:w-[250px]">
-              <Image src={coverSrc} alt={`${project.name} app screenshot`} fill className="object-cover object-top" />
+              <Image src={primaryScreenshotSrc} alt={`${project.name} app screenshot`} fill className="object-cover object-top" />
             </div>
           </motion.div>
 
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 7.4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="theme-device-side hidden rounded-[28px] p-2 sm:block"
+            className={`theme-device-side hidden rounded-[28px] p-2 sm:block ${tertiaryScreenshotSrc ? "" : "sm:hidden"}`}
           >
-            <div className="theme-device-screen relative aspect-[9/19] w-[160px] overflow-hidden rounded-[22px]">
-              <Image src={coverSrc} alt={`${project.name} secondary preview`} fill className="object-cover object-top" />
-            </div>
+            {tertiaryScreenshotSrc ? (
+              <div className="theme-device-screen relative aspect-[9/19] w-[160px] overflow-hidden rounded-[22px]">
+                <Image src={tertiaryScreenshotSrc} alt={`${project.name} secondary preview`} fill className="object-cover object-top" />
+              </div>
+            ) : null}
           </motion.div>
         </div>
 

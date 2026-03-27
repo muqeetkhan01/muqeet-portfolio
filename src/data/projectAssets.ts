@@ -2,22 +2,47 @@ export const projectAssets = {
   "linkease": {
     icon: "/projects/linkease/icon.jpg",
     cover: "/projects/linkease/cover.jpg",
+    screenshots: [
+      "/projects/linkease/cover.jpg",
+      "/projects/linkease/screen-2.jpg",
+      "/projects/linkease/screen-3.jpg",
+    ],
   },
   "meetworth": {
     icon: "/projects/meetworth/icon.jpg",
     cover: "/projects/meetworth/cover.png",
+    screenshots: [
+      "/projects/meetworth/cover.png",
+      "/projects/meetworth/screen-2.png",
+      "/projects/meetworth/screen-3.png",
+    ],
   },
   "cargorent": {
     icon: "/projects/cargorent/icon.jpg",
     cover: "/projects/cargorent/cover.jpg",
+    screenshots: [
+      "/projects/cargorent/cover.jpg",
+      "/projects/cargorent/screen-2.jpg",
+      "/projects/cargorent/screen-3.jpg",
+    ],
   },
   "stm": {
     icon: "/projects/stm/icon.jpg",
     cover: "/projects/stm/cover.png",
+    screenshots: [
+      "/projects/stm/cover.png",
+      "/projects/stm/screen-2.png",
+      "/projects/stm/screen-3.png",
+    ],
   },
   "gamechanger": {
     icon: "/projects/gamechanger/icon.jpg",
     cover: "/projects/gamechanger/cover.webp",
+    screenshots: [
+      "/projects/gamechanger/cover.webp",
+      "/projects/gamechanger/screen-2.webp",
+      "/projects/gamechanger/screen-3.webp",
+    ],
   },
   "ferebe": {
     icon: "/projects/ferebe/icon.jpg",
