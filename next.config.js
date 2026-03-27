@@ -1,5 +1,7 @@
 const repoName = "muqeet-portfolio";
 const isGithubPagesBuild = process.env.GITHUB_ACTIONS === "true";
+const hasCustomDomain = Boolean(process.env.CUSTOM_DOMAIN);
+const useProjectBasePath = isGithubPagesBuild && !hasCustomDomain;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,8 +11,8 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     unoptimized: true
   },
-  basePath: isGithubPagesBuild ? `/${repoName}` : "",
-  assetPrefix: isGithubPagesBuild ? `/${repoName}/` : ""
+  basePath: useProjectBasePath ? `/${repoName}` : "",
+  assetPrefix: useProjectBasePath ? `/${repoName}/` : ""
 };
 
 module.exports = nextConfig;
