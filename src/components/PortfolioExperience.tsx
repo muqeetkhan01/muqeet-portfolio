@@ -139,7 +139,7 @@ export function PortfolioExperience() {
 
       <main id="top">
         <section className="theme-section relative overflow-hidden">
-          <div className="mx-auto grid max-w-[1440px] gap-12 px-5 pb-16 pt-12 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
+          <div className="mx-auto grid max-w-[1440px] gap-8 px-4 pb-12 pt-8 sm:gap-12 sm:px-8 sm:pb-16 sm:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:pb-24 lg:pt-20">
             <motion.div
               initial="hidden"
               animate="show"
@@ -150,7 +150,8 @@ export function PortfolioExperience() {
                 variants={fadeUp}
                 className="theme-chip-accent inline-flex rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.34em]"
               >
-                For SaaS founders, operators, and ambitious product teams
+                <span className="sm:hidden">For founders and product teams</span>
+                <span className="hidden sm:inline">For SaaS founders, operators, and ambitious product teams</span>
               </motion.p>
 
               <div className="hero-copy-wrap mt-6 max-w-5xl">
@@ -168,22 +169,22 @@ export function PortfolioExperience() {
 
               <motion.p
                 variants={fadeUp}
-                className="theme-copy-muted mt-6 max-w-3xl text-lg leading-relaxed sm:text-xl"
+                className="theme-copy-muted mt-5 max-w-3xl text-base leading-relaxed sm:mt-6 sm:text-xl"
               >
                 I build premium mobile products, operational systems, and conversion-ready software experiences for
                 companies that want to look credible, modern, and expensive from the first screen.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
+              <motion.div variants={fadeUp} className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
                 <a
                   href="#all-apps"
-                  className="theme-button-primary inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+                  className="theme-button-primary inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 sm:w-auto"
                 >
                   View more apps
                 </a>
                 <a
                   href="#featured"
-                  className="theme-button-secondary inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
+                  className="theme-button-secondary inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5 sm:w-auto"
                 >
                   See featured work
                 </a>
@@ -195,7 +196,7 @@ export function PortfolioExperience() {
 
               <motion.div
                 variants={fadeUp}
-                className="mt-8 flex flex-wrap gap-3"
+                className="hero-capability-grid mt-6 flex flex-wrap gap-3 sm:mt-8"
               >
                 {["Mobile apps", "AI workflows", "SaaS systems", "Business software"].map((item, index) => (
                   <motion.span
@@ -211,7 +212,7 @@ export function PortfolioExperience() {
 
               <motion.div
                 variants={fadeUp}
-                className="mt-10 grid gap-4 sm:grid-cols-3"
+                className="hero-proof-grid mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3"
               >
                 <ProofCard value="100+" label="shipped apps across product, business, and operational work" />
                 <ProofCard value="10+" label="years building consumer, business, and operational apps" />
@@ -229,7 +230,7 @@ export function PortfolioExperience() {
             </motion.div>
           </div>
 
-          <div className="theme-section-divider overflow-hidden py-5">
+          <div className="hero-marquee-wrap theme-section-divider overflow-hidden py-5">
             <div className="marquee-track">
               {[...portfolioApps, ...portfolioApps].map((app, index) => (
                 <a
@@ -250,7 +251,7 @@ export function PortfolioExperience() {
           </div>
         </section>
 
-        <section id="featured" className="px-5 py-16 sm:px-8 lg:py-24">
+        <section id="featured" className="px-4 py-12 sm:px-8 sm:py-16 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <SectionIntro
               eyebrow="Featured Work"
@@ -266,7 +267,7 @@ export function PortfolioExperience() {
           </div>
         </section>
 
-        <section id="all-apps" className="theme-section-soft px-5 py-16 sm:px-8 lg:py-24">
+        <section id="all-apps" className="theme-section-soft px-4 py-12 sm:px-8 sm:py-16 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <div className="theme-section-divider flex flex-col gap-6 pb-8 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-4xl">
@@ -303,7 +304,7 @@ export function PortfolioExperience() {
           </div>
         </section>
 
-        <section id="capabilities" className="px-5 py-16 sm:px-8 lg:py-24">
+        <section id="capabilities" className="px-4 py-12 sm:px-8 sm:py-16 lg:py-24">
           <div className="mx-auto max-w-[1440px]">
             <SectionIntro
               eyebrow="Capabilities"
@@ -332,7 +333,7 @@ export function PortfolioExperience() {
           </div>
         </section>
 
-        <section id="contact" className="px-5 pb-16 sm:px-8 lg:pb-24">
+        <section id="contact" className="px-4 pb-12 sm:px-8 sm:pb-16 lg:pb-24">
           <div className="mx-auto max-w-[1440px]">
             <motion.div
               initial={{ opacity: 0, y: 32 }}
@@ -605,7 +606,7 @@ function ProjectPanel({
           </div>
         </div>
 
-        <h3 className="theme-ink mt-6 text-3xl font-semibold leading-tight sm:text-4xl">{project.name}</h3>
+        <h3 className="project-panel-title theme-ink mt-6 text-3xl font-semibold leading-tight sm:text-4xl">{project.name}</h3>
         <p className="theme-ink-soft mt-4 text-lg leading-relaxed">{project.headline}</p>
         <p className="theme-copy-muted mt-5 max-w-2xl text-base leading-relaxed">{project.summary}</p>
 

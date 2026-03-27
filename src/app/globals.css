@@ -834,6 +834,22 @@ textarea:focus-visible {
     line-height: 0.88;
   }
 
+  .hero-capability-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .hero-capability-grid .theme-chip {
+    justify-content: center;
+    text-align: center;
+    min-width: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+  }
+
   .hero-stage {
     border-radius: 24px;
   }
@@ -869,6 +885,10 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .hero-proof-grid .glass-panel {
+    padding: 1rem;
+  }
+
   .project-panel-meta {
     flex-direction: column;
     gap: 0.75rem;
@@ -878,12 +898,24 @@ textarea:focus-visible {
     font-size: 3rem;
   }
 
+  .project-panel-title {
+    font-size: 2rem;
+  }
+
   .feature-device-screen {
     width: min(68vw, 216px);
   }
 
+  .theme-feature-label {
+    display: none;
+  }
+
   .theme-card-preview {
     aspect-ratio: 10 / 13;
+  }
+
+  .hero-marquee-wrap {
+    display: none;
   }
 
   .profile-presence-layout {
