@@ -556,7 +556,7 @@ function ProfilePresenceCard() {
     <div className="profile-presence-card glass-panel relative overflow-hidden rounded-[30px] p-4 sm:p-5">
       <div className="profile-presence-glow" aria-hidden />
       <div className="profile-presence-layout relative z-10 flex items-center gap-4">
-        <div className="profile-presence-image relative h-24 w-24 overflow-hidden rounded-[24px] sm:h-28 sm:w-28">
+        <div className="profile-presence-image relative h-20 w-20 overflow-hidden rounded-[22px] sm:h-24 sm:w-24">
           <Image src={profileSrc} alt={`${site.name} portrait`} fill className="object-cover" />
         </div>
 
@@ -837,7 +837,9 @@ function ProjectMark({
 
     return (
       <div className={`theme-mark-shell relative overflow-hidden ${dimensions}`}>
-        <Image src={iconSrc} alt={`${project.name} icon`} fill className="theme-mark-image object-contain" />
+        <div className="theme-mark-frame relative h-full w-full overflow-hidden rounded-[inherit]">
+          <Image src={iconSrc} alt={`${project.name} icon`} fill className="theme-mark-image object-cover" />
+        </div>
       </div>
     );
   }
