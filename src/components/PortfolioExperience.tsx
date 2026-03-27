@@ -92,16 +92,16 @@ export function PortfolioExperience() {
       </div>
 
       <header className="theme-header sticky top-0 z-50">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 sm:px-8">
-          <a href="#top" className="flex items-center gap-3">
+        <div className="theme-header-row mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 sm:px-8">
+          <a href="#top" className="theme-brand flex items-center gap-3">
             <span className="theme-logo-mark grid h-11 w-11 place-items-center rounded-2xl text-sm font-semibold">
               MK
             </span>
-            <span>
-              <span className="theme-muted block text-[11px] uppercase tracking-[0.34em]">
+            <span className="min-w-0">
+              <span className="theme-brand-kicker theme-muted block text-[11px] uppercase tracking-[0.34em]">
                 Product Engineer
               </span>
-              <span className="theme-ink text-sm font-semibold tracking-tight">{site.name}</span>
+              <span className="theme-brand-name theme-ink block text-sm font-semibold tracking-tight">{site.name}</span>
             </span>
           </a>
 
@@ -112,7 +112,7 @@ export function PortfolioExperience() {
             <a href="#contact" className="theme-nav-link transition">Contact</a>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="theme-header-actions flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={() => setTheme((current) => (current === "dark" ? "light" : "dark"))}
@@ -128,7 +128,8 @@ export function PortfolioExperience() {
               rel="noreferrer"
               className="theme-button-accent inline-flex items-center rounded-full px-5 py-2.5 text-sm font-semibold transition hover:-translate-y-0.5"
             >
-              Start on WhatsApp
+              <span className="hidden sm:inline">Start on WhatsApp</span>
+              <span className="sm:hidden">WhatsApp</span>
             </a>
           </div>
         </div>
@@ -338,7 +339,7 @@ export function PortfolioExperience() {
               <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="relative z-10">
                   <p className="theme-accent text-xs font-semibold uppercase tracking-[0.32em]">Contact</p>
-                  <h2 className="theme-ink mt-4 font-display text-[3.4rem] uppercase leading-[0.88] sm:text-[4.8rem]">
+                  <h2 className="theme-ink theme-contact-title mt-4 font-display text-[3.4rem] uppercase leading-[0.88] sm:text-[4.8rem]">
                     Let&apos;s build
                     <span className="theme-accent block">your next product.</span>
                   </h2>
@@ -432,7 +433,7 @@ function HeroSignalBoard() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="theme-stage-card hero-signal-panel rounded-[34px] p-6"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="hero-signal-header flex items-start justify-between gap-4">
               <div>
                 <p className="theme-accent text-[11px] uppercase tracking-[0.3em]">Portfolio signal</p>
                 <p className="theme-ink mt-3 text-3xl font-semibold leading-[0.98]">{portfolioApps.length} shipped apps</p>
@@ -561,7 +562,7 @@ function ProjectPanel({
       className="glass-panel grid gap-8 overflow-hidden rounded-[36px] p-5 sm:p-7 lg:grid-cols-[0.82fr_1.18fr]"
     >
       <div className={reversed ? "order-2" : "order-2 lg:order-1"}>
-        <div className="theme-muted flex items-center gap-4">
+        <div className="project-panel-meta theme-muted flex items-center gap-4">
           <span className="theme-muted-soft font-display text-6xl leading-none">{String(index + 1).padStart(2, "0")}</span>
           <div>
             <p className="theme-accent text-xs font-semibold uppercase tracking-[0.28em]">{project.category}</p>
@@ -609,7 +610,7 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
 
     return (
       <div
-        className="theme-feature-panel relative overflow-hidden rounded-[32px] p-5 sm:p-7"
+        className="theme-feature-panel theme-feature-panel-visual relative overflow-hidden rounded-[32px] p-5 sm:p-7"
         style={{ background: `linear-gradient(140deg, ${project.accent}22, var(--visual-end) 65%)` }}
       >
         <div className="theme-feature-overlay absolute inset-0" />
@@ -617,7 +618,7 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
           Live product visual
         </div>
 
-        <div className="relative mx-auto flex max-w-[520px] items-end justify-center gap-4 pt-14">
+        <div className="feature-device-row relative mx-auto flex max-w-[520px] items-end justify-center gap-4 pt-14">
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
@@ -631,10 +632,10 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
           <motion.div
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 6.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            className="theme-device-main relative rounded-[36px] p-3"
+            className="theme-device-main feature-device-main relative rounded-[36px] p-3"
           >
             <div className="theme-device-notch absolute left-1/2 top-3 h-1.5 w-20 -translate-x-1/2 rounded-full" />
-            <div className="theme-device-screen relative aspect-[9/19] w-[220px] overflow-hidden rounded-[28px] sm:w-[250px]">
+            <div className="theme-device-screen feature-device-screen relative aspect-[9/19] w-[220px] overflow-hidden rounded-[28px] sm:w-[250px]">
               <Image src={coverSrc} alt={`${project.name} app screenshot`} fill className="object-cover object-top" />
             </div>
           </motion.div>
@@ -650,13 +651,13 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
           </motion.div>
         </div>
 
-        <div className="absolute bottom-5 left-5">
+        <div className="feature-project-badge absolute bottom-5 left-5">
           <div className="theme-float-card rounded-full px-3 py-3">
             <div className="flex items-center gap-3">
               <ProjectMark project={project} size="small" />
               <div>
                 <p className="theme-ink text-sm font-semibold">{project.name}</p>
-                <p className="theme-muted text-[11px] uppercase tracking-[0.24em]">{project.category}</p>
+                <p className="theme-muted feature-badge-copy text-[11px] uppercase tracking-[0.24em]">{project.category}</p>
               </div>
             </div>
           </div>
