@@ -190,13 +190,17 @@ export function PortfolioExperience() {
                 </a>
               </motion.div>
 
-              <motion.div variants={fadeUp} className="mt-8">
+              <motion.div variants={fadeUp} className="mt-6 sm:hidden">
+                <MobileHeroSummary />
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="mt-8 hidden sm:block">
                 <ProfilePresenceCard />
               </motion.div>
 
               <motion.div
                 variants={fadeUp}
-                className="hero-capability-grid mt-6 flex flex-wrap gap-3 sm:mt-8"
+                className="hero-capability-grid mt-6 hidden flex-wrap gap-3 sm:mt-8 sm:flex"
               >
                 {["Mobile apps", "AI workflows", "SaaS systems", "Business software"].map((item, index) => (
                   <motion.span
@@ -212,7 +216,7 @@ export function PortfolioExperience() {
 
               <motion.div
                 variants={fadeUp}
-                className="hero-proof-grid mt-8 grid gap-3 sm:mt-10 sm:grid-cols-3"
+                className="hero-proof-grid mt-8 hidden gap-3 sm:mt-10 sm:grid sm:grid-cols-3"
               >
                 <ProofCard value="100+" label="shipped apps across product, business, and operational work" />
                 <ProofCard value="10+" label="years building consumer, business, and operational apps" />
@@ -224,7 +228,7 @@ export function PortfolioExperience() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="relative"
+              className="relative hidden lg:block"
             >
               <HeroSignalBoard />
             </motion.div>
@@ -574,6 +578,44 @@ function ProfilePresenceCard() {
             </span>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileHeroSummary() {
+  const profileSrc = withBasePath(site.profileImage);
+
+  return (
+    <div className="mobile-hero-summary glass-panel rounded-[24px] p-4">
+      <div className="flex items-center gap-3">
+        <div className="relative h-14 w-14 overflow-hidden rounded-[18px]">
+          <Image src={profileSrc} alt={`${site.name} portrait`} fill className="object-cover" />
+        </div>
+        <div className="min-w-0">
+          <p className="theme-accent text-[10px] font-semibold uppercase tracking-[0.26em]">Lead builder</p>
+          <p className="theme-ink mt-1 text-xl font-semibold">{site.name}</p>
+          <p className="theme-copy-muted mt-1 text-sm leading-relaxed">{site.title}</p>
+        </div>
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-2">
+        <div className="theme-signal-card rounded-[18px] px-3 py-3">
+          <p className="theme-ink text-lg font-semibold">100+</p>
+          <p className="theme-muted mt-1 text-[10px] uppercase tracking-[0.18em]">Apps shipped</p>
+        </div>
+        <div className="theme-signal-card rounded-[18px] px-3 py-3">
+          <p className="theme-ink text-lg font-semibold">10+</p>
+          <p className="theme-muted mt-1 text-[10px] uppercase tracking-[0.18em]">Years</p>
+        </div>
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {featuredProjects.slice(0, 4).map((project) => (
+          <span key={project.slug} className="theme-chip inline-flex rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.2em]">
+            {project.name}
+          </span>
+        ))}
       </div>
     </div>
   );

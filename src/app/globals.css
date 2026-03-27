@@ -830,8 +830,24 @@ textarea:focus-visible {
   }
 
   .hero-line {
-    font-size: clamp(2.9rem, 16vw, 4.4rem);
-    line-height: 0.88;
+    font-size: clamp(2.35rem, 13vw, 3.55rem);
+    line-height: 0.9;
+  }
+
+  .hero-copy-stage {
+    max-width: 100%;
+  }
+
+  .theme-chip-accent {
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+  }
+
+  .mobile-hero-summary {
+    padding: 1rem;
   }
 
   .hero-capability-grid {
@@ -916,6 +932,10 @@ textarea:focus-visible {
 
   .hero-marquee-wrap {
     display: none;
+  }
+
+  .theme-copy-muted {
+    font-size: 0.98rem;
   }
 
   .profile-presence-layout {
