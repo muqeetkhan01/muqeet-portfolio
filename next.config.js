@@ -1,7 +1,6 @@
 const repoName = "muqeet-portfolio";
 const isGithubPagesBuild = process.env.GITHUB_ACTIONS === "true";
-const hasCustomDomain = Boolean(process.env.CUSTOM_DOMAIN);
-const useProjectBasePath = isGithubPagesBuild && !hasCustomDomain;
+const useProjectBasePath = isGithubPagesBuild;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
