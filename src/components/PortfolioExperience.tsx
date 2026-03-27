@@ -65,7 +65,6 @@ export function PortfolioExperience() {
   const [showAllApps, setShowAllApps] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const wa = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
-  const appCount = portfolioApps.length;
   const visibleApps = showAllApps ? portfolioApps : portfolioApps.slice(0, 12);
 
   useEffect(() => {
@@ -207,7 +206,7 @@ export function PortfolioExperience() {
                 variants={fadeUp}
                 className="mt-10 grid gap-4 sm:grid-cols-3"
               >
-                <ProofCard value={`${appCount}`} label="verified shipped apps now shown on the site" />
+                <ProofCard value="100+" label="shipped apps across product, business, and operational work" />
                 <ProofCard value="10+" label="years building consumer, business, and operational apps" />
                 <ProofCard value="AI + Ops" label="stronger fit for SaaS, logistics, enterprise, and field software" />
               </motion.div>
@@ -278,7 +277,7 @@ export function PortfolioExperience() {
                 onClick={() => setShowAllApps((current) => !current)}
                 className="theme-button-secondary inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
               >
-                {showAllApps ? "Show less" : `View all ${appCount} apps`}
+                {showAllApps ? "Show less" : "View all apps"}
               </button>
             </div>
 
@@ -436,7 +435,7 @@ function HeroSignalBoard() {
             <div className="hero-signal-header flex items-start justify-between gap-4">
               <div>
                 <p className="theme-accent text-[11px] uppercase tracking-[0.3em]">Portfolio signal</p>
-                <p className="theme-ink mt-3 text-3xl font-semibold leading-[0.98]">{portfolioApps.length} shipped apps</p>
+                <p className="theme-ink mt-3 text-3xl font-semibold leading-[0.98]">100+ shipped apps</p>
               </div>
               <div className="theme-chip-accent rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.24em]">
                 Live work
