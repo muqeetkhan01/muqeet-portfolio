@@ -41,6 +41,16 @@ const heroLines = [
   { text: "businesses.", accent: false }
 ];
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+function withBasePath(path: string) {
+  if (!path.startsWith("/")) {
+    return path;
+  }
+
+  return `${basePath}${path}`;
+}
+
 export function PortfolioExperience() {
   const [showAllApps, setShowAllApps] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
@@ -582,6 +592,8 @@ function ProjectPanel({
 
 function FeatureVisual({ project }: { project: PortfolioApp }) {
   if (project.cover) {
+    const coverSrc = withBasePath(project.cover);
+
     return (
       <div
         className="theme-feature-panel relative overflow-hidden rounded-[32px] p-5 sm:p-7"
@@ -599,7 +611,7 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
             className="theme-device-side hidden rounded-[28px] p-2 sm:block"
           >
             <div className="theme-device-screen relative aspect-[9/19] w-[160px] overflow-hidden rounded-[22px]">
-              <Image src={project.cover} alt={`${project.name} app preview`} fill className="object-cover object-top" />
+              <Image src={coverSrc} alt={`${project.name} app preview`} fill className="object-cover object-top" />
             </div>
           </motion.div>
 
@@ -610,7 +622,7 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
           >
             <div className="theme-device-notch absolute left-1/2 top-3 h-1.5 w-20 -translate-x-1/2 rounded-full" />
             <div className="theme-device-screen relative aspect-[9/19] w-[220px] overflow-hidden rounded-[28px] sm:w-[250px]">
-              <Image src={project.cover} alt={`${project.name} app screenshot`} fill className="object-cover object-top" />
+              <Image src={coverSrc} alt={`${project.name} app screenshot`} fill className="object-cover object-top" />
             </div>
           </motion.div>
 
@@ -620,7 +632,7 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
             className="theme-device-side hidden rounded-[28px] p-2 sm:block"
           >
             <div className="theme-device-screen relative aspect-[9/19] w-[160px] overflow-hidden rounded-[22px]">
-              <Image src={project.cover} alt={`${project.name} secondary preview`} fill className="object-cover object-top" />
+              <Image src={coverSrc} alt={`${project.name} secondary preview`} fill className="object-cover object-top" />
             </div>
           </motion.div>
         </div>
@@ -747,9 +759,11 @@ function ProjectMark({
         : "h-28 w-28 rounded-[30px]";
 
   if (project.icon) {
+    const iconSrc = withBasePath(project.icon);
+
     return (
       <div className={`theme-mark-shell relative overflow-hidden ${dimensions}`}>
-        <Image src={project.icon} alt={`${project.name} icon`} fill className="object-cover" />
+        <Image src={iconSrc} alt={`${project.name} icon`} fill className="object-cover" />
       </div>
     );
   }
