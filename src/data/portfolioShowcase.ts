@@ -28,6 +28,21 @@ export const portfolioApps: PortfolioApp[] = [
     priority: true
   },
   {
+    slug: "meetworth",
+    name: "MeetWorth",
+    category: "Business Networking / Founder Platform",
+    headline: "A verified entrepreneur network built for business owners who want premium connections, sharper discovery, and stronger in-app credibility.",
+    summary:
+      "Positioned more like a serious founder product than a generic social app, with swiping, networking, group chats, and business-first profile flows.",
+    href: "https://apps.apple.com/us/app/meetworth-business-networking/id1662378935",
+    accent: "#f2b766",
+    initials: "MW",
+    tags: ["Priority app", "Founder network", "Business"],
+    icon: "/projects/meetworth/icon.jpg",
+    cover: "/projects/meetworth/cover.png",
+    priority: true
+  },
+  {
     slug: "cargorent",
     name: "CargoRent",
     category: "Logistics / Fleet Operations",
@@ -415,7 +430,7 @@ export const portfolioApps: PortfolioApp[] = [
   }
 ];
 
-const featuredOrder = ["linkease", "cargorent", "stm", "gamechanger"];
+const featuredOrder = ["linkease", "meetworth", "cargorent", "stm", "gamechanger"];
 
 export const featuredProjects = featuredOrder
   .map((slug) => portfolioApps.find((project) => project.slug === slug))

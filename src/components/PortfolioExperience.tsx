@@ -55,6 +55,7 @@ export function PortfolioExperience() {
   const [showAllApps, setShowAllApps] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const wa = `https://wa.me/${site.whatsapp.replace(/\D/g, "")}`;
+  const appCount = portfolioApps.length;
   const visibleApps = showAllApps ? portfolioApps : portfolioApps.slice(0, 12);
 
   useEffect(() => {
@@ -195,7 +196,7 @@ export function PortfolioExperience() {
                 variants={fadeUp}
                 className="mt-10 grid gap-4 sm:grid-cols-3"
               >
-                <ProofCard value={`100+`} label="verified shipped products now shown on the site" />
+                <ProofCard value={`${appCount}`} label="verified shipped apps now shown on the site" />
                 <ProofCard value="10+" label="years building consumer, business, and operational apps" />
                 <ProofCard value="AI + Ops" label="stronger fit for SaaS, logistics, enterprise, and field software" />
               </motion.div>
@@ -266,7 +267,7 @@ export function PortfolioExperience() {
                 onClick={() => setShowAllApps((current) => !current)}
                 className="theme-button-secondary inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
               >
-                {showAllApps ? "Show less" : `View more apps`}
+                {showAllApps ? "Show less" : `View all ${appCount} apps`}
               </button>
             </div>
 
@@ -357,7 +358,7 @@ export function PortfolioExperience() {
 
 function HeroSignalBoard() {
   const signalApps = featuredProjects.slice(0, 4);
-  const orbitApps = featuredProjects.slice(0, 3);
+  const orbitApps = featuredProjects.slice(0, 4);
 
   return (
     <div className="hero-stage">
@@ -403,8 +404,8 @@ function HeroSignalBoard() {
             className="hero-side-card theme-float-card rounded-[28px] p-5"
           >
             <p className="theme-accent text-[11px] uppercase tracking-[0.24em]">Featured apps</p>
-            <p className="theme-ink mt-3 text-[1.65rem] font-semibold leading-tight">LinkEase, CargoRent, STM</p>
-            <p className="theme-copy-muted mt-3 text-sm leading-relaxed">Travel, logistics, and AI-driven field products.</p>
+            <p className="theme-ink mt-3 text-[1.65rem] font-semibold leading-tight">LinkEase, MeetWorth, CargoRent, STM</p>
+            <p className="theme-copy-muted mt-3 text-sm leading-relaxed">Travel, founder networking, logistics, and AI-driven field products.</p>
             <div className="mt-6 space-y-2">
               {["Premium UX", "Operational logic", "Production-ready delivery"].map((item) => (
                 <div key={item} className="theme-signal-card flex items-center gap-3 rounded-[18px] px-3 py-2.5">
@@ -424,7 +425,7 @@ function HeroSignalBoard() {
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="theme-accent text-[11px] uppercase tracking-[0.3em]">Portfolio signal</p>
-                <p className="theme-ink mt-3 text-3xl font-semibold leading-[0.98]">100+ shipped apps</p>
+                <p className="theme-ink mt-3 text-3xl font-semibold leading-[0.98]">{portfolioApps.length} shipped apps</p>
               </div>
               <div className="theme-chip-accent rounded-full px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.24em]">
                 Live work

@@ -453,6 +453,11 @@ body {
   bottom: 8%;
 }
 
+.hero-orbit-card-4 {
+  top: 18%;
+  left: -2%;
+}
+
 .hero-fit-card {
   width: min(100%, 320px);
 }
