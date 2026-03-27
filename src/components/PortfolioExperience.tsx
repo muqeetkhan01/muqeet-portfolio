@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { projectAssets } from "@/data/projectAssets";
 import { site } from "@/data/site";
 import {
   capabilityRows,
@@ -49,6 +50,15 @@ function withBasePath(path: string) {
   }
 
   return `${basePath}${path}`;
+}
+
+function resolveProjectAssets(project: PortfolioApp) {
+  const assets = projectAssets[project.slug as keyof typeof projectAssets];
+
+  return {
+    icon: project.icon ?? assets?.icon,
+    cover: project.cover ?? assets?.cover
+  };
 }
 
 export function PortfolioExperience() {
@@ -592,8 +602,10 @@ function ProjectPanel({
 }
 
 function FeatureVisual({ project }: { project: PortfolioApp }) {
-  if (project.cover) {
-    const coverSrc = withBasePath(project.cover);
+  const assets = resolveProjectAssets(project);
+
+  if (assets.cover) {
+    const coverSrc = withBasePath(assets.cover);
 
     return (
       <div
@@ -706,6 +718,8 @@ function FeatureVisual({ project }: { project: PortfolioApp }) {
 }
 
 function AppCard({ project }: { project: PortfolioApp }) {
+  const assets = resolveProjectAssets(project);
+
   return (
     <motion.a
       layout
@@ -716,8 +730,23 @@ function AppCard({ project }: { project: PortfolioApp }) {
       whileHover={{ y: -8 }}
       className="group glass-panel rounded-[30px] p-5 transition"
     >
-      <div className="flex items-start justify-between gap-4">
-        <ProjectMark project={project} size="medium" />
+      {assets.cover ? (
+        <div className="theme-card-preview relative mb-5 overflow-hidden rounded-[24px]">
+          <div className="theme-card-preview-overlay absolute inset-0 z-10" />
+          <Image
+            src={withBasePath(assets.cover)}
+            alt={`${project.name} screenshot`}
+            fill
+            className="object-cover object-top transition duration-500 group-hover:scale-[1.04]"
+          />
+          <div className="absolute bottom-3 left-3 z-20">
+            <ProjectMark project={project} size="small" />
+          </div>
+        </div>
+      ) : null}
+
+      <div className={`flex items-start gap-4 ${assets.cover ? "justify-end" : "justify-between"}`}>
+        {!assets.cover ? <ProjectMark project={project} size="medium" /> : <div />}
         {project.priority ? (
           <span className="theme-chip-accent inline-flex rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em]">
             Priority
@@ -758,13 +787,14 @@ function ProjectMark({
       : size === "medium"
         ? "h-16 w-16 rounded-[22px]"
         : "h-28 w-28 rounded-[30px]";
+  const assets = resolveProjectAssets(project);
 
-  if (project.icon) {
-    const iconSrc = withBasePath(project.icon);
+  if (assets.icon) {
+    const iconSrc = withBasePath(assets.icon);
 
     return (
       <div className={`theme-mark-shell relative overflow-hidden ${dimensions}`}>
-        <Image src={iconSrc} alt={`${project.name} icon`} fill className="object-cover" />
+        <Image src={iconSrc} alt={`${project.name} icon`} fill className="theme-mark-image object-contain" />
       </div>
     );
   }

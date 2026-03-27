@@ -497,6 +497,26 @@ body {
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.14);
 }
 
+.theme-mark-image {
+  padding: 6%;
+}
+
+.theme-card-preview {
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at top, color-mix(in srgb, var(--accent) 14%, transparent), transparent 56%),
+    var(--device-screen);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.theme-card-preview-overlay {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 18%, transparent 64%, rgba(7, 17, 31, 0.16)),
+    linear-gradient(145deg, transparent, color-mix(in srgb, var(--accent) 10%, transparent));
+  pointer-events: none;
+}
+
 .feature-grid {
   background-image:
     linear-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1px),
