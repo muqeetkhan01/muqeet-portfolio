@@ -24,7 +24,7 @@ export const portfolioApps: PortfolioApp[] = [
     href: "https://apps.apple.com/pk/app/linkease-for-travel-families/id6743674626",
     accent: "#4de2c5",
     initials: "LE",
-    tags: ["Priority app", "SaaS feel", "Travel"],
+    tags: ["Family utility", "SaaS feel", "Travel"],
     priority: true
   },
   {
@@ -37,7 +37,7 @@ export const portfolioApps: PortfolioApp[] = [
     href: "https://apps.apple.com/us/app/meetworth-business-networking/id1662378935",
     accent: "#f2b766",
     initials: "MW",
-    tags: ["Priority app", "Founder network", "Business"],
+    tags: ["Founder network", "Business", "Networking"],
     icon: "/projects/meetworth/icon.jpg",
     cover: "/projects/meetworth/cover.png",
     priority: true
@@ -52,7 +52,7 @@ export const portfolioApps: PortfolioApp[] = [
     href: "https://apps.apple.com/us/app/cargorent/id6448697695",
     accent: "#6fb1ff",
     initials: "CR",
-    tags: ["Priority app", "Operations", "Business"],
+    tags: ["Operations", "Business", "Logistics"],
     icon: "/projects/cargorent/icon.jpg",
     priority: true
   },
@@ -66,7 +66,7 @@ export const portfolioApps: PortfolioApp[] = [
     href: "https://apps.apple.com/pk/app/stm/id6473781207",
     accent: "#7af06d",
     initials: "STM",
-    tags: ["Priority app", "AI-rich", "Field ops"],
+    tags: ["AI-rich", "Field ops", "Inspection"],
     icon: "/projects/stm/icon.jpg",
     priority: true
   },

@@ -185,7 +185,7 @@ export function PortfolioExperience() {
                   href="#featured"
                   className="theme-button-secondary inline-flex items-center rounded-full px-6 py-3 text-sm font-semibold transition hover:-translate-y-0.5"
                 >
-                  See priority work
+                  See featured work
                 </a>
               </motion.div>
 
@@ -452,7 +452,7 @@ function HeroSignalBoard() {
             <div className="hero-metric-row mt-6 grid gap-3 sm:grid-cols-3">
               <HeroMetric value="100+" label="Shipped apps" />
               <HeroMetric value="10+" label="Years" />
-              <HeroMetric value="4" label="Priority sectors" />
+              <HeroMetric value="4" label="Core sectors" />
             </div>
 
             <div className="mt-6 space-y-3">
@@ -788,14 +788,11 @@ function AppCard({ project }: { project: PortfolioApp }) {
         </div>
       ) : null}
 
-      <div className={`flex items-start gap-4 ${assets.cover ? "justify-end" : "justify-between"}`}>
-        {!assets.cover ? <ProjectMark project={project} size="medium" /> : <div />}
-        {project.priority ? (
-          <span className="theme-chip-accent inline-flex rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em]">
-            Priority
-          </span>
-        ) : null}
-      </div>
+      {!assets.cover ? (
+        <div className="flex items-start justify-between gap-4">
+          <ProjectMark project={project} size="medium" />
+        </div>
+      ) : null}
 
       <div className="mt-5">
         <p className="theme-ink text-lg font-semibold">{project.name}</p>
