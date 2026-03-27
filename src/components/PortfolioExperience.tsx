@@ -186,6 +186,10 @@ export function PortfolioExperience() {
                 </a>
               </motion.div>
 
+              <motion.div variants={fadeUp} className="mt-8">
+                <ProfilePresenceCard />
+              </motion.div>
+
               <motion.div
                 variants={fadeUp}
                 className="mt-8 flex flex-wrap gap-3"
@@ -538,6 +542,35 @@ function ProofCard({ value, label }: { value: string; label: string }) {
     <div className="glass-panel rounded-[28px] px-5 py-5">
       <p className="theme-ink text-2xl font-semibold">{value}</p>
       <p className="theme-copy-muted mt-2 text-sm leading-relaxed">{label}</p>
+    </div>
+  );
+}
+
+function ProfilePresenceCard() {
+  const profileSrc = withBasePath(site.profileImage);
+
+  return (
+    <div className="profile-presence-card glass-panel relative overflow-hidden rounded-[30px] p-4 sm:p-5">
+      <div className="profile-presence-glow" aria-hidden />
+      <div className="profile-presence-layout relative z-10 flex items-center gap-4">
+        <div className="profile-presence-image relative h-24 w-24 overflow-hidden rounded-[24px] sm:h-28 sm:w-28">
+          <Image src={profileSrc} alt={`${site.name} portrait`} fill className="object-cover" />
+        </div>
+
+        <div className="min-w-0">
+          <p className="theme-accent text-[11px] font-semibold uppercase tracking-[0.3em]">Lead builder</p>
+          <h2 className="theme-ink mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">{site.name}</h2>
+          <p className="theme-copy-muted mt-2 max-w-xl text-sm leading-relaxed sm:text-base">{site.title}</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <span className="theme-chip inline-flex rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.22em]">
+              {site.location}
+            </span>
+            <span className="theme-chip-accent inline-flex rounded-full px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.22em]">
+              Available now
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
